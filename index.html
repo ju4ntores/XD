@@ -1,0 +1,267 @@
+<!doctype html> 
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recurso: Servicios institucionales - UNAD (Estudiantes de primera matrícula)</title>
+  <meta name="description" content="Guía interactiva para estudiantes nuevos de la UNAD sobre los principales servicios institucionales." />
+  <style>
+    :root{
+      --accent:#F47B20;   /* Naranja UNAD */
+      --primary:#031b85;  /* Azul UNAD */
+      --muted:#555;
+      --bg:#f7f8fb;
+      --card:#fff;
+      --radius:12px;
+    }
+
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, Arial, sans-serif;margin:0;background:var(--bg);color:#222;line-height:1.45}
+    a{color:inherit}
+
+    header{
+      background:linear-gradient(90deg,var(--primary),#002d5c);
+      color:white;
+      padding:28px 20px 18px;
+      text-align:center;
+    }
+    header img{max-width:200px;height:auto;display:block;margin:0 auto 12px}
+    header .welcome{font-size:1.6rem;margin:0}
+    header .subtitle{margin-top:8px;font-size:1rem;color:var(--accent);font-weight:600}
+
+    .container{max-width:1100px;margin:18px auto;padding:0 16px}
+    main{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
+    @media (max-width:1000px){main{grid-template-columns:1fr}}
+
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:var(--radius);
+      box-shadow:0 8px 24px rgba(5,20,45,0.06);
+      margin-bottom:16px;
+    }
+    .home-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:16px;
+      margin-top:12px;
+    }
+    .home-tile{
+      background:linear-gradient(180deg,#ffffff,#fbfbfd);
+      border-radius:14px;
+      padding:18px;
+      text-align:center;
+      cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease;
+      box-shadow:0 6px 18px rgba(10,25,50,0.06);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:120px;
+    }
+    .home-tile:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(10,25,50,0.10)}
+    .home-tile h3{margin:0;color:var(--primary);font-size:1.05rem}
+    .home-intro{font-size:0.98rem;color:var(--muted);margin-top:8px}
+
+    .page{display:none}
+    .page.active{display:block;animation:pageIn .32s ease}
+    @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+    section h2{margin:0;color:var(--primary);font-size:1.3rem}
+    .sub{margin-top:14px;border-radius:10px;padding:12px;background:linear-gradient(180deg,#ffffff,#fcfdff);box-shadow:0 6px 12px rgba(8,20,40,0.03)}
+    .sub h3{margin:0;font-size:1rem;color:var(--accent)}
+    .sub p{margin:8px 0;color:var(--muted)}
+    .img-placeholder{
+      width:100%;
+      height:150px;
+      background:#eaf0f7;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--primary);
+      font-weight:700;
+      margin-top:8px
+    }
+
+    aside .mini{display:flex;flex-direction:column;gap:8px}
+    .mini a{display:inline-block;padding:10px 12px;border-radius:8px;background:linear-gradient(90deg,var(--primary),#0b5a86);color:white;text-decoration:none}
+    .mini a:hover{opacity:.95;transform:translateY(-2px)}
+
+    .btn{
+      display:inline-block;padding:10px 16px;border-radius:10px;border:none;background:var(--primary);color:white;cursor:pointer;
+      transition:background .18s ease, transform .12s ease;
+    }
+    .btn:hover{background:var(--accent);transform:translateY(-2px)}
+    .btn-back{background:var(--accent);}
+
+    footer{padding:20px;text-align:center;color:var(--muted);font-size:0.9rem;margin-top:20px}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/unad logo.png" alt="UNAD — Logo">
+    <div class="welcome">Bienvenido a la UNAD — Recurso educativo</div>
+    <div class="subtitle">Guía rápida para estudiantes de primera matrícula</div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <div id="home" class="page active">
+      <div class="card">
+        <h2 style="color:var(--primary);margin:0">Explora los servicios institucionales</h2>
+        <p class="home-intro">Haz clic en cualquiera de las tarjetas para ver la información detallada.</p>
+
+        <div class="home-grid">
+          <div class="home-tile" onclick="openView('campus')">
+            <h3>Campus Virtual UNAD</h3>
+            <p class="home-intro">Acceso, navegación y aulas virtuales.</p>
+          </div>
+          <div class="home-tile" onclick="openView('academicos')">
+            <h3>Servicios académicos</h3>
+            <p class="home-intro">Biblioteca, tutorías y más.</p>
+          </div>
+          <div class="home-tile" onclick="openView('bienestar')">
+            <h3>Bienestar universitario</h3>
+            <p class="home-intro">Apoyo psicológico, cultura y deporte.</p>
+          </div>
+          <div class="home-tile" onclick="openView('administrativos')">
+            <h3>Servicios administrativos</h3>
+            <p class="home-intro">Matrículas y plataforma de pagos.</p>
+          </div>
+          <div class="home-tile" onclick="openView('soporte')">
+            <h3>Soporte y comunicación</h3>
+            <p class="home-intro">Mesa de ayuda y correo institucional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. CAMPUS VIRTUAL -->
+    <div id="campus" class="page">
+      <div class="card">
+        <button class="btn btn-back" onclick="openView('home')">← Volver</button>
+        <h2>1. Campus Virtual UNAD</h2>
+        <div class="sub">
+          <h3>1.1 Acceso y navegación</h3>
+          <p>Aprende a ingresar al campus, navegar en el menú principal y acceder a tus cursos fácilmente.</p>
+          <img src="img/Ingreso al campus .png">Ingreso al campus</div>
+        </div>
+        <div class="sub">
+          <h3>1.2 Aulas virtuales y actividades</h3>
+          <p>Descubre cómo funcionan las aulas, dónde ver tus materias, entregar actividades y consultar calificaciones.</p>
+          <img src="img/aula virtual.png">Aula virtual</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. SERVICIOS ACADÉMICOS -->
+    <div id="academicos" class="page">
+      <div class="card">
+        <button class="btn btn-back" onclick="openView('home')">← Volver</button>
+        <h2>2. Servicios académicos</h2>
+        <div class="sub">
+          <h3>2.1 Biblioteca digital</h3>
+          <p>Acceso a libros, artículos, bases de datos y revistas científicas en línea.</p>
+          <img src="img/biblioteca.png">Biblioteca digital</div>
+        </div>
+        <div class="sub">
+          <h3>2.2 Tutorías y asesorías</h3>
+          <p>Solicita acompañamiento académico y recibe orientación de tus tutores en diferentes áreas.</p>
+          <img src="img/tutorias.png">Tutorías</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. BIENESTAR -->
+    <div id="bienestar" class="page">
+      <div class="card">
+        <button class="btn btn-back" onclick="openView('home')">← Volver</button>
+        <h2>3. Bienestar universitario</h2>
+        <div class="sub">
+          <h3>3.1 Programas de apoyo psicológico</h3>
+          <p>Servicios de acompañamiento emocional y salud mental.</p>
+          <img src="img/apoyo psicologico.png">Apoyo psicológico</div>
+        </div>
+        <div class="sub">
+          <h3>3.2 Actividades culturales y deportivas</h3>
+          <p>Talleres, eventos y espacios de recreación para estudiantes.</p>
+          <img src="img/cultura y deporte .png">Cultura y deporte</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ADMINISTRATIVOS -->
+    <div id="administrativos" class="page">
+      <div class="card">
+        <button class="btn btn-back" onclick="openView('home')">← Volver</button>
+        <h2>4. Servicios administrativos</h2>
+        <div class="sub">
+          <h3>4.1 Matrículas</h3>
+          <p>Información sobre procesos de matrícula e inscripción de cursos.</p>
+          <img src="img/matricula y horarios .png">Matrículas</div>
+        </div>
+        <div class="sub">
+          <h3>4.2 Plataforma de pagos</h3>
+          <p>Accede al sistema para realizar pagos de matrícula y otros servicios.</p>
+          <img src="img/pse.jpg">Pagos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. SOPORTE -->
+    <div id="soporte" class="page">
+      <div class="card">
+        <button class="btn btn-back" onclick="openView('home')">← Volver</button>
+        <h2>5. Soporte y comunicación</h2>
+        <div class="sub">
+          <h3>5.1 Mesa de ayuda técnica</h3>
+          <p>Soporte para resolver problemas de acceso, contraseñas y plataformas.</p>
+          <img src="img/mesa de ayuda.png">Mesa de ayuda</div>
+        </div>
+        <div class="sub">
+          <h3>5.2 Correo institucional y canales de contacto</h3>
+          <p>Correo UNAD y medios oficiales para comunicarte con tutores y áreas administrativas.</p>
+          <img src="img/correo institucional .png">Correo institucional</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASIDE: Recursos rápidos -->
+    <aside>
+      <div class="card">
+        <h3 style="color:var(--primary);margin-top:0">Recursos rápidos</h3>
+        <div class="mini">
+          <a href="#" onclick="openView('administrativos')">Cómo matricularse</a>
+          <a href="#" onclick="openView('campus')">Entrar al Aula Virtual</a>
+          <a href="#" onclick="openView('academicos')">Biblioteca virtual</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="container">Universidad Nacional Abierta y a Distancia — UNAD © 2025</div>
+  </footer>
+
+  <script>
+    function openView(viewId){
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      const target = document.getElementById(viewId);
+      if(target){
+        target.classList.add('active');
+        history.replaceState(null, '', '#'+viewId);
+        window.scrollTo({top:0,behavior:'smooth'});
+      }
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = (location.hash || '#home').replace('#','');
+      if(document.getElementById(hash)){
+        openView(hash);
+      } else {
+        openView('home');
+      }
+    });
+  </script>
+</body>
+</html>
